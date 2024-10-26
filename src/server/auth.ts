@@ -18,6 +18,7 @@ import { ironSession } from 'iron-session/express'
 import { confirmEmail } from '~/emails'
 import { AuthenticationError } from '~/utils/auth'
 import { getDomain } from '~/utils/email'
+import { logger } from '~/server/utils/logger'
 
 export { AuthenticationError }
 
@@ -419,7 +420,7 @@ export async function getConfirmUrl(confirmTokenId: string) {
       password: ironSessionOptions.password,
     }
   )
-  console.log("getConfirmUrl", `${env.APP_URL}/confirm-email?seal=${seal}`);
+  logger.info("getConfirmUrl", `${env.APP_URL}/confirm-email?seal=${seal}`);
   return `${env.APP_URL}/confirm-email?seal=${seal}`
 }
 
