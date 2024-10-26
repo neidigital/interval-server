@@ -19,9 +19,10 @@ RUN apk update && apk add --no-cache postgresql-client
 
 # copy the built files from the previous stage
 COPY --from=build /app/release /release
+WORKDIR /release
 # install the package globally from the built files
-RUN npm i --save-prod -g /release
+RUN yarn install --production
 
 EXPOSE 3000
-
-CMD [ "interval-server", "start"]
+ENTRYPOINT [ "/release/dist/src/entry.js" ]
+CMD [ "start" ]
