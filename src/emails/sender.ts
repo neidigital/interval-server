@@ -153,18 +153,17 @@ export default function emailSender<T extends TemplateData>(
       return
     }
 
-    // const postmark = new PostmarkClient(env.POSTMARK_API_KEY)
+    const postmark = new PostmarkClient(env.POSTMARK_API_KEY)
 
     logger.info(`> Sending "${message.subject}" to ${message.to}`)
 
-    // const response = await postmark.sendEmail({
-    //   From: message.from,
-    //   To: message.to,
-    //   Subject: message.subject,
-    //   HtmlBody: message.html,
-    // })
-    logger.info('> Email sent successfully', message)
+    const response = await postmark.sendEmail({
+      From: message.from,
+      To: message.to,
+      Subject: message.subject,
+      HtmlBody: message.html,
+    })
 
-    return { response: {Message: "OK"}, html: message.html }
+    return { response, html: message.html }
   }
 }
