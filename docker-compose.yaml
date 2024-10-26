@@ -1,0 +1,10 @@
+version: '3.8'
+# docker compose run --rm -it interval-server db-init --skip-create
+services:
+  interval-server:
+    image: interval-server:latest
+    build: .
+    environment:
+      DATABASE_URL: 
+    ports:
+      - "80:80"

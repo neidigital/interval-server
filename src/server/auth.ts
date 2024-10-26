@@ -420,7 +420,9 @@ export async function getConfirmUrl(confirmTokenId: string) {
       password: ironSessionOptions.password,
     }
   )
-  logger.info("getConfirmUrl", `${env.APP_URL}/confirm-email?seal=${seal}`);
+  logger.info("getConfirmUrl", {
+    url: `${env.APP_URL}/confirm-email?seal=${seal}`
+  });
   return `${env.APP_URL}/confirm-email?seal=${seal}`
 }
 
