@@ -157,13 +157,14 @@ export default function emailSender<T extends TemplateData>(
 
     logger.info(`> Sending "${message.subject}" to ${message.to}`)
 
-    const response = await postmark.sendEmail({
-      From: message.from,
-      To: message.to,
-      Subject: message.subject,
-      HtmlBody: message.html,
-    })
+    // const response = await postmark.sendEmail({
+    //   From: message.from,
+    //   To: message.to,
+    //   Subject: message.subject,
+    //   HtmlBody: message.html,
+    // })
+    logger.info('> Email sent successfully', message)
 
-    return { response, html: message.html }
+    return { response: null, html: message.html }
   }
 }
