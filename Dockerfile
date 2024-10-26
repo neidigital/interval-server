@@ -24,5 +24,5 @@ WORKDIR /release
 RUN yarn install --production
 
 EXPOSE 3000
-ENTRYPOINT [ "/release/dist/src/entry.js" ]
+ENTRYPOINT ["node", "/release/dist/src/entry.js" ]
 CMD [ "start" ]
