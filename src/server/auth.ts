@@ -419,7 +419,7 @@ export async function getConfirmUrl(confirmTokenId: string) {
       password: ironSessionOptions.password,
     }
   )
-
+  console.log("getConfirmUrl", `${env.APP_URL}/confirm-email?seal=${seal}`);
   return `${env.APP_URL}/confirm-email?seal=${seal}`
 }
 
