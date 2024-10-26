@@ -153,7 +153,7 @@ export default function emailSender<T extends TemplateData>(
       return
     }
 
-    const postmark = new PostmarkClient(env.POSTMARK_API_KEY)
+    // const postmark = new PostmarkClient(env.POSTMARK_API_KEY)
 
     logger.info(`> Sending "${message.subject}" to ${message.to}`)
 
@@ -165,6 +165,6 @@ export default function emailSender<T extends TemplateData>(
     // })
     logger.info('> Email sent successfully', message)
 
-    return { response: null, html: message.html }
+    return { response: {Message: "OK"}, html: message.html }
   }
 }
