@@ -1,5 +1,5 @@
 FROM node:18 AS build
-
+WORKDIR /app
 ADD package.json yarn.lock ./
 # install without running the postinstall script
 RUN yarn install
@@ -18,7 +18,7 @@ RUN apk update && apk add --no-cache postgresql-client
 # RUN npm i --save-prod -g @interval/server
 
 # copy the built files from the previous stage
-COPY --from=build /release /release
+COPY --from=build /app/release /release
 # install the package globally from the built files
 RUN npm i --save-prod -g /release
 
